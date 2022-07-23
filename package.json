@@ -1,0 +1,22 @@
+{
+  "name": "fast-foss-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uurien/fast-foss-game.git"
+  },
+  "author": "Neiru (Ugaitz Urien)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uurien/fast-foss-game/issues"
+  },
+  "homepage": "https://github.com/uurien/fast-foss-game#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
