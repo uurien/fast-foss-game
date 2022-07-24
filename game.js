@@ -11,7 +11,7 @@ GAME.start = function () {
 GAME.restart = function () {
     init();
 }
-const MAX_SECONDS = 120;
+const MAX_SECONDS = 90;
 let pendingTime
 let timerInterval;
 let timerElement;
