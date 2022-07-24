@@ -28,7 +28,7 @@ function init () {
 
 function initPlayers () {
     playerPosition = {x: 0, y: 15}
-    player2Positions = [{x: 15, y: 15}, {x: 13, y: 17}, {x: 17, y: 17}, {x: 15, y: 17}]
+    player2Positions = [{x: 15, y: 15}, {x: 13, y: 17}, {x: 15, y: 17}, {x: 17, y: 17}]
     player.setX(getPixels(playerPosition.x))
     player.setY(getPixels(playerPosition.y))
     for (let i = 0; i < PLAYER2_SIZE; i++) {
@@ -43,9 +43,12 @@ function startTimer() {
     timerInterval = setInterval(updateTimer, 1000)
 }
 function drawTime () {
-    const seconds = pendingTime % 60;
-    const minutes = Math.floor(pendingTime / 60);
-    timerElement.innerText = `${minutes}:${seconds < 10 ? '0': ''}${seconds}`;
+    timerElement.innerText = formatTime(pendingTime);
+}
+function formatTime(totalSeconds) {
+    const seconds = Math.floor(totalSeconds % 60);
+    const minutes = Math.floor(totalSeconds / 60);
+    return `${minutes}:${seconds < 10 ? '0': ''}${seconds}`
 }
 function updateTimer () {
     if (GAME.running) {
@@ -101,7 +104,7 @@ function preload ()
     this.load.image('wall', 'assets/wall.png');
     this.load.image('ball-big', 'assets/ball-big.png');
     this.load.image('ball-small', 'assets/ball-small.png');
-    this.load.image('smile', 'assets/smile.png');
+    this.load.image('smile', 'assets/euskal.png');
     this.load.spritesheet('enemy', 'assets/enemy.png', { frameWidth: 25, frameHeight: 25 });
     this.load.image('enemy-normal', 'assets/enemy-normal.png');
     this.load.image('enemy-selected', 'assets/enemy-selected.png');
@@ -234,11 +237,14 @@ function p1Win () {
     document.getElementById('main').classList.add('hidden')
     document.getElementById('p1-winner').classList.remove('hidden')
     document.getElementById('p2-winner').classList.add('hidden')
+    document.getElementById('p1-replay').focus()
 }
 
 function p2Win () {
     document.getElementById('menu').classList.remove('hidden')
     document.getElementById('main').classList.add('hidden')
     document.getElementById('p1-winner').classList.add('hidden')
-    document.getElementById('p2-winner').classList.remove('hidden')
+    document.getElementById('p2-winner').classList.remove('hidden');
+    document.getElementById('p2-replay').focus()
+    document.getElementById('sobrean').innerText = formatTime(pendingTime)
 }
