@@ -6,7 +6,84 @@
     <script src="./game.js"></script>
     <meta charset="UTF-8">
     <title>Man Pac</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #menu {
+            z-index: 100;
+            position: absolute;
+            display: block;
+            left: 0;
+            width: 775px;
+            height: 775px;
+            top: 0;
+            background: #fff;
+        }
+        .main, .winner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .winner h2 {
+            margin-top: 100px;
+        }
+        .logo-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .play {
+            margin-top: 200px;
+            width: 600px;
+            height: 60px;
+            background: white;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            font-weight: 200;
+            font-size: 24px;
+        }
+        .play:active {
+            box-shadow: none;
+            margin-top: 201px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        #timer {
+            position: absolute;
+            z-index: 5;
+            left: 325px;
+            top: 400px;
+            font-size: 25px;
+            display: block;
+            width: 125px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+<div id="menu">
+    <div id="main" class="main">
+        <div class="logo-container">
+            <img src="assets/logo-euskal.png" alt="Euskal Encounter 30 - Fast FOSS Game">
+        </div>
+        <button onclick="GAME.start()" class="play">Hasi!</button>
+    </div>
+    <div id="p1-winner" class="winner hidden">
+        <h2>P1 IRABAZLE!</h2>
+        <button onclick="GAME.restart()" class="play">Berriro!</button>
+    </div>
+    <div id="p2-winner" class="winner hidden">
+        <h2>P2 IRABAZLE!</h2>
+        <button onclick="GAME.restart()" class="play">Berriro!</button>
+    </div>
+</div>
+<div id="timer">
+    2:00
+</div>
+
 </body>
 </html>
